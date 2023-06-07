@@ -38,9 +38,9 @@ module "secure_baseline" {
   audit_log_bucket_force_destroy = true
 
   providers = {
-    aws                = aws
-    aws.us-gov-west-1  = aws.us-gov-west-1
-    aws.us-gov-east-1  = aws.us-gov-east-1
+    aws               = aws
+    aws.us-gov-west-1 = aws.us-gov-west-1
+    aws.us-gov-east-1 = aws.us-gov-east-1
   }
 }
 

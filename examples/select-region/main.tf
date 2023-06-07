@@ -37,8 +37,8 @@ module "secure_baseline" {
   # This module only configure regions specified in target_regions argument though,
   # all providers still need to be passed to the module.
   providers = {
-    aws                = aws
-    aws.us-gov-west-1  = aws.us-gov-west-1
-    aws.us-gov-east-1  = aws.us-gov-east-1
+    aws               = aws
+    aws.us-gov-west-1 = aws.us-gov-west-1
+    aws.us-gov-east-1 = aws.us-gov-east-1
   }
 }

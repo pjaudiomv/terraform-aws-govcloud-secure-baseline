@@ -30,9 +30,9 @@ module "secure_baseline" {
   support_iam_role_principal_arns = [aws_iam_user.admin.arn]
 
   providers = {
-    aws                = aws
-    aws.us-gov-west-1  = aws.us-gov-west-1
-    aws.us-gov-east-1  = aws.us-gov-east-1
+    aws               = aws
+    aws.us-gov-west-1 = aws.us-gov-west-1
+    aws.us-gov-east-1 = aws.us-gov-east-1
   }
 }
 
