@@ -80,12 +80,12 @@ module "vpc_baseline_us-gov-west-1" {
   tags = var.tags
 }
 
-module "vpc_baseline_us-gov-west-2" {
-  count  = var.vpc_enable && contains(var.target_regions, "us-gov-west-2") ? 1 : 0
+module "vpc_baseline_us-gov-east-1" {
+  count  = var.vpc_enable && contains(var.target_regions, "us-gov-east-1") ? 1 : 0
   source = "./modules/vpc-baseline"
 
   providers = {
-    aws = aws.us-gov-west-2
+    aws = aws.us-gov-east-1
   }
 
   enable_flow_logs            = var.vpc_enable_flow_logs

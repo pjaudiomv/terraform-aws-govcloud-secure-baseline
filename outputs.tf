@@ -59,7 +59,7 @@ output "config_configuration_recorder" {
 
   value = {
     "us-gov-west-1" = one(module.config_baseline_us-gov-west-1[*].configuration_recorder)
-    "us-gov-west-2" = one(module.config_baseline_us-gov-west-2[*].configuration_recorder)
+    "us-gov-east-1" = one(module.config_baseline_us-gov-east-1[*].configuration_recorder)
   }
 }
 
@@ -68,7 +68,7 @@ output "config_sns_topic" {
 
   value = {
     "us-gov-west-1" = one(module.config_baseline_us-gov-west-1[*].config_sns_topic)
-    "us-gov-west-2" = one(module.config_baseline_us-gov-west-2[*].config_sns_topic)
+    "us-gov-east-1" = one(module.config_baseline_us-gov-east-1[*].config_sns_topic)
   }
 }
 
@@ -81,7 +81,7 @@ output "guardduty_detector" {
 
   value = {
     "us-gov-west-1" = one(module.guardduty_baseline_us-gov-west-1[*].guardduty_detector)
-    "us-gov-west-2" = one(module.guardduty_baseline_us-gov-west-2[*].guardduty_detector)
+    "us-gov-east-1" = one(module.guardduty_baseline_us-gov-east-1[*].guardduty_detector)
   }
 }
 
@@ -108,7 +108,7 @@ output "vpc_flow_logs_group" {
 
   value = local.flow_logs_to_cw_logs ? {
     "us-gov-west-1" = one(module.vpc_baseline_us-gov-west-1[*].vpc_flow_logs_group)
-    "us-gov-west-2" = one(module.vpc_baseline_us-gov-west-2[*].vpc_flow_logs_group)
+    "us-gov-east-1" = one(module.vpc_baseline_us-gov-east-1[*].vpc_flow_logs_group)
   } : null
 }
 
@@ -117,7 +117,7 @@ output "default_vpc" {
 
   value = {
     "us-gov-west-1" = one(module.vpc_baseline_us-gov-west-1[*].default_vpc)
-    "us-gov-west-2" = one(module.vpc_baseline_us-gov-west-2[*].default_vpc)
+    "us-gov-east-1" = one(module.vpc_baseline_us-gov-east-1[*].default_vpc)
   }
 }
 
@@ -126,7 +126,7 @@ output "default_security_group" {
 
   value = {
     "us-gov-west-1" = one(module.vpc_baseline_us-gov-west-1[*].default_security_group)
-    "us-gov-west-2" = one(module.vpc_baseline_us-gov-west-2[*].default_security_group)
+    "us-gov-east-1" = one(module.vpc_baseline_us-gov-east-1[*].default_security_group)
   }
 }
 
@@ -135,7 +135,7 @@ output "default_network_acl" {
 
   value = {
     "us-gov-west-1" = one(module.vpc_baseline_us-gov-west-1[*].default_network_acl)
-    "us-gov-west-2" = one(module.vpc_baseline_us-gov-west-2[*].default_network_acl)
+    "us-gov-east-1" = one(module.vpc_baseline_us-gov-east-1[*].default_network_acl)
   }
 }
 
@@ -144,7 +144,7 @@ output "default_route_table" {
 
   value = {
     "us-gov-west-1" = one(module.vpc_baseline_us-gov-west-1[*].default_route_table)
-    "us-gov-west-2" = one(module.vpc_baseline_us-gov-west-2[*].default_route_table)
+    "us-gov-east-1" = one(module.vpc_baseline_us-gov-east-1[*].default_route_table)
   }
 }
 

@@ -23,15 +23,15 @@ module "securityhub_baseline_us-gov-west-1" {
   member_accounts                  = local.securityhub_member_accounts
 }
 
-module "securityhub_baseline_us-gov-west-2" {
-  count  = contains(var.target_regions, "us-gov-west-2") && var.securityhub_enabled ? 1 : 0
+module "securityhub_baseline_us-gov-east-1" {
+  count  = contains(var.target_regions, "us-gov-east-1") && var.securityhub_enabled ? 1 : 0
   source = "./modules/securityhub-baseline"
 
   providers = {
     aws = aws.us-gov-west-1
   }
 
-  aggregate_findings               = var.region == "us-gov-west-2"
+  aggregate_findings               = var.region == "us-gov-east-1"
   enable_cis_standard              = var.securityhub_enable_cis_standard
   enable_pci_dss_standard          = var.securityhub_enable_pci_dss_standard
   enable_aws_foundational_standard = var.securityhub_enable_aws_foundational_standard

@@ -38,7 +38,7 @@ variable "target_regions" {
   type        = list(string)
   default = [
     "us-gov-west-1",
-    "us-gov-west-2"
+    "us-gov-east-1"
   ]
 }
 

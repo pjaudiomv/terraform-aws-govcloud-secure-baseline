@@ -1,7 +1,7 @@
 locals {
   config_topics = [
     one(module.config_baseline_us-gov-west-1[*].config_sns_topic),
-    one(module.config_baseline_us-gov-west-2[*].config_sns_topic),
+    one(module.config_baseline_us-gov-east-1[*].config_sns_topic),
   ]
 }
 
@@ -104,12 +104,12 @@ module "config_baseline_us-gov-west-1" {
   depends_on = [aws_s3_bucket_policy.audit_log]
 }
 
-module "config_baseline_us-gov-west-2" {
-  count  = var.config_baseline_enabled && contains(var.target_regions, "us-gov-west-2") ? 1 : 0
+module "config_baseline_us-gov-east-1" {
+  count  = var.config_baseline_enabled && contains(var.target_regions, "us-gov-east-1") ? 1 : 0
   source = "./modules/config-baseline"
 
   providers = {
-    aws = aws.us-gov-west-2
+    aws = aws.us-gov-east-1
   }
 
   iam_role_arn                  = one(aws_iam_role.recorder[*].arn)
@@ -118,7 +118,7 @@ module "config_baseline_us-gov-west-2" {
   delivery_frequency            = var.config_delivery_frequency
   sns_topic_name                = var.config_sns_topic_name
   sns_topic_kms_master_key_id   = var.config_sns_topic_kms_master_key_id
-  include_global_resource_types = var.config_global_resources_all_regions ? true : var.region == "us-gov-west-2"
+  include_global_resource_types = var.config_global_resources_all_regions ? true : var.region == "us-gov-east-1"
 
   tags = var.tags
 
@@ -144,7 +144,7 @@ resource "aws_config_config_rule" "iam_mfa" {
   # Ensure this rule is created after all configuration recorders.
   depends_on = [
     module.config_baseline_us-gov-west-1,
-    module.config_baseline_us-gov-west-2,
+    module.config_baseline_us-gov-east-1,
   ]
 }
 
@@ -164,7 +164,7 @@ resource "aws_config_config_rule" "unused_credentials" {
   # Ensure this rule is created after all configuration recorders.
   depends_on = [
     module.config_baseline_us-gov-west-1,
-    module.config_baseline_us-gov-west-2,
+    module.config_baseline_us-gov-east-1,
   ]
 }
 
@@ -189,7 +189,7 @@ resource "aws_config_config_rule" "user_no_policies" {
   # Ensure this rule is created after all configuration recorders.
   depends_on = [
     module.config_baseline_us-gov-west-1,
-    module.config_baseline_us-gov-west-2,
+    module.config_baseline_us-gov-east-1,
   ]
 }
 
@@ -214,7 +214,7 @@ resource "aws_config_config_rule" "no_policies_with_full_admin_access" {
   # Ensure this rule is created after all configuration recorders.
   depends_on = [
     module.config_baseline_us-gov-west-1,
-    module.config_baseline_us-gov-west-2,
+    module.config_baseline_us-gov-east-1,
   ]
 }
 

@@ -9,7 +9,7 @@ terraform {
       # A provider alias should be passed for each AWS region.
       # Reference: https://docs.aws.amazon.com/general/latest/gr/rande.html
       configuration_aliases = [
-        aws.us-gov-west-1, aws.us-gov-west-2
+        aws.us-gov-west-1, aws.us-gov-east-1
       ]
     }
   }

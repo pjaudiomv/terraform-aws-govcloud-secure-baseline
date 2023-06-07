@@ -26,12 +26,12 @@ module "guardduty_baseline_us-gov-west-1" {
   tags = var.tags
 }
 
-module "guardduty_baseline_us-gov-west-2" {
-  count  = contains(var.target_regions, "us-gov-west-2") && var.guardduty_enabled ? 1 : 0
+module "guardduty_baseline_us-gov-east-1" {
+  count  = contains(var.target_regions, "us-gov-east-1") && var.guardduty_enabled ? 1 : 0
   source = "./modules/guardduty-baseline"
 
   providers = {
-    aws = aws.us-gov-west-2
+    aws = aws.us-gov-east-1
   }
 
   disable_email_notification   = var.guardduty_disable_email_notification
