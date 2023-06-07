@@ -7,7 +7,7 @@ module "ebs_baseline_us-gov-west-1" {
   source = "./modules/ebs-baseline"
 
   providers = {
-    aws = aws.us-gov-westt-1
+    aws = aws.us-gov-west-1
   }
 }
 
